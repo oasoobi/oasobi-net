@@ -59,7 +59,7 @@ export default function Home() {
           </div>
           <h2 className="text-xl mt-5">マイクラ統合版で音ブロックの音階を表示するアドオン。</h2>
           <div className="md:flex mt-3 gap-5">
-            <p>対応バージョン: 1.20.80.x</p>
+            <p>対応バージョン: 1.20.8x</p>
             <p>最終更新: 2024 4/24</p>
           </div>
           <div className="mt-10">
