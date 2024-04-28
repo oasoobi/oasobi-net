@@ -33,7 +33,7 @@ export default function Home() {
               <CardDescription>音ブロックの音階を表示するアドオン。</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>対応 ver 1.20.80.x</p>
+              <p>対応 ver 1.20.8x</p>
             </CardContent>
             <CardContent>
               <Link href={"/downloads/noteblockplus"}>
