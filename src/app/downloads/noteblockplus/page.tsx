@@ -59,8 +59,8 @@ export default function Home() {
           </div>
           <h2 className="text-xl mt-5">マイクラ統合版で音ブロックの音階を表示するアドオン。</h2>
           <div className="md:flex mt-3 gap-5">
-            <p>対応バージョン: 1.20.80.x</p>
-            <p>最終更新: 2024 4/24</p>
+            <p>対応バージョン: 1.20.8x</p>
+            <p>最終更新: 2024 5/8</p>
           </div>
           <div className="mt-10">
             <h1 className="text-4xl font-bold">注意</h1>
@@ -80,6 +80,11 @@ export default function Home() {
             </div>
             <p className="mt-3">しゃがみながら使用すると、現在の音階を変更せずに確認できます。</p>
             <p>そのまま使用すると、変更されたあとの音階を確認できます。</p>
+          </div>
+          <div className="mt-10">
+            <h1 className="text-4xl font-bold">設定について</h1>
+            <p className="mt-3">チャット欄で、「/function note/config」を実行すると設定画面を開くことができます。</p>
+            <p>今は言語、音階の表示形式、クリック数の表示/非表示、音の種類の表示/非表示を変えることができます。</p>
           </div>
           <div className="mt-10">
             <h1 className="text-4xl font-bold">ダウンロード</h1>
