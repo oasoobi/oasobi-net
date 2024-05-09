@@ -13,8 +13,8 @@ export default function Home() {
           <h1 className="text-center text-4xl font-bold mb-5">おあそび</h1>
           <p className="mb-7 text-center">プログラミングとマイクラが好きな人です。</p>
           <div className="flex item-center justify-center gap-6">
-            <a href="https://m.youtube.com/@oasobi_" target="_blank" rel="noopener noreferrer"><Button>Youtube</Button></a>
-            <a href="https://twitter.com/oasoobi" target="_blank" rel="noopener noreferrer"><Button>Twitter</Button></a>
+            <a href="https://m.youtube.com/@oasoby" target="_blank" rel="noopener noreferrer"><Button>Youtube</Button></a>
+            <a href="https://twitter.com/oasoby" target="_blank" rel="noopener noreferrer"><Button>Twitter</Button></a>
             <a href="https://github.com/oasoobi" target="_blank" rel="noopener noreferrer"><Button>Github</Button></a>
           </div>
         </div>
