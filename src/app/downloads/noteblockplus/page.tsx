@@ -15,30 +15,13 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { useEffect, useState } from "react"
 import { Metadata } from "next";
-
+import Head from "next/head";
+import "../../globals.css"
 
 export default function Home() {
-  const [totalDownloads, setTotalDownloads ] = useState<number | null>(null);
+  const [totalDownloads, setTotalDownloads] = useState<number | null>(null);
+  const [latestVersion, setLatestVersion] = useState<string | null>(null);
   const [isChecked, setIsChecked] = useState<boolean>(false);
-
-
-  useEffect(() => {
-      async function fetchDownloads() {
-          const response = await fetch("https://api.github.com/repos/oasoobi/noteblockplus/releases");
-          const releases = await response.json();
-
-          let totalDownloadCount = 0;
-          releases.forEach((release: { assets: { download_count: number }[] }) => {
-              release.assets.forEach((asset: { download_count: number }) => {
-                  totalDownloadCount += asset.download_count;
-              });
-          });
-          setTotalDownloads(totalDownloadCount);
-      }
-      fetchDownloads();
-  }, [])
-
-
   const downloadFile = () => {
     const url = 'https://github.com/oasoobi/noteblockplus/releases/latest/download/noteblockplus.mcpack';
     const a = document.createElement('a');
@@ -48,26 +31,48 @@ export default function Home() {
     document.body.removeChild(a);
   };
 
+  useEffect(() => {
+    async function fetchRelease() {
+      const response = await fetch("https://api.github.com/repos/oasoobi/noteblockplus/releases");
+      const releases = await response.json();
+      let latestVersion = releases[0]?.name;
+      let totalDownloadCount = 0;
+      releases.forEach((release: { assets: { download_count: number }[] }) => {
+        release.assets.forEach((asset: { download_count: number }) => {
+          totalDownloadCount += asset.download_count;
+        });
+      });
+      setTotalDownloads(totalDownloadCount);
+      setLatestVersion(latestVersion);
+    }
+    fetchRelease();
+  }, [])
+
   return (
     <main className="min-h-lvh pt-14 ">
-      <title>Note Block+ | oasobi</title>
+      <Head>
+        <title>Note Block+ | oasobi</title>
+        <meta name="description" content="マインクラフト統合版で音ブロックの音階や音の種類の確認ができるようになるアドオンです。" />
+      </Head>
       <div className="flex items-center justify-center h-full w-[80%] ml-[10%] mr-[10%]">
         <div className="pt-10">
           <div className="flex items-center gap-2">
-            <Image src="/noteblock.svg" alt="" width={40} height={40} className="pointer-events-none select-none"/>
+            <Image src="/noteblock.svg" alt="" width={40} height={40} className="pointer-events-none select-none pixelated" />
             <h1 className="text-4xl font-bold">Noteblock+</h1>
           </div>
           <h2 className="text-xl mt-5">マイクラ統合版で音ブロックの音階を表示するアドオン。</h2>
           <div className="md:flex mt-3 gap-5">
-            <p>対応バージョン: 1.20.8x</p>
-            <p>最終更新: 2024 5/8</p>
+            <p>Supported: 1.20.8x</p>
+            <p>Last Updated: 2024 5/12</p>
+            <p>Latest: {latestVersion}</p>
           </div>
           <div className="mt-10">
-            <h1 className="text-4xl font-bold">注意</h1>
+            <h1 className="text-4xl font-bold">⚠ 注意</h1>
             <p className="mt-5">マインクラフトのバージョンが更新されると、動かなくなる可能性があります。必ず更新を確認してください。</p>
+            <p>初期の言語は英語です。設定から日本語に変更できます。<Link href={"#setting"} className="underline">変更方法</Link></p>
             <p>ベータAPI、ホリデークリエイターの特徴を有効にしてから、アドオンを入れてください。</p>
             <div className="flex items-center justify-center">
-              <Image src="/please_enable.png" width={350} height={60} alt=" " className="mt-3 rounded-md pointer-events-none select-none"/>
+              <Image src="/please_enable.png" width={600} height={60} alt="" className="mt-3 rounded-md pointer-events-none select-none" />
             </div>
           </div>
           <div className="mt-10">
@@ -76,21 +81,27 @@ export default function Home() {
               クリエイティブインベントリから「note stick」を取り出します。
             </p>
             <div className="flex items-center justify-center">
-              <Image src="/ntp/inventory.png" width={350} height={30} alt=" " className="mt-3 rounded-md pointer-events-none select-none"/>
+              <Image src="/ntp/inventory.png" width={600} height={30} alt="" className="mt-3 rounded-md pointer-events-none select-none" />
             </div>
             <p className="mt-3">しゃがみながら使用すると、現在の音階を変更せずに確認できます。</p>
             <p>そのまま使用すると、変更されたあとの音階を確認できます。</p>
           </div>
           <div className="mt-10">
-            <h1 className="text-4xl font-bold">設定について</h1>
-            <p className="mt-3">チャット欄で、「/function note/config」を実行すると設定画面を開くことができます。</p>
-            <p>今は言語、音階の表示形式、クリック数の表示/非表示、音の種類の表示/非表示を変えることができます。</p>
+            <section id="setting">
+              <h1 className="text-4xl font-bold">設定について</h1>
+              <p className="mt-3">チャット欄で、「/function note/config」を実行すると設定画面を開くことができます。</p>
+              <p>今は言語、音階の表示形式、クリック数の表示/非表示、音の種類の表示/非表示を変えることができます。</p>
+              <div className="flex items-center justify-center">
+                <Image src={"/ntp/setting.png"} width={600} height={30} alt="" className="mt-3 rounded-md pointer-events-none select-none"></Image>
+              </div>
+            </section>
           </div>
+
           <div className="mt-10">
             <h1 className="text-4xl font-bold">ダウンロード</h1>
             <div className="mt-5">
               <div className="flex items-center space-x-2 mb-4">
-                <Checkbox id="terms" checked={isChecked} onCheckedChange={(newChecked) => setIsChecked(newChecked === "indeterminate" ? false : newChecked)}/>
+                <Checkbox id="terms" checked={isChecked} onCheckedChange={(newChecked) => setIsChecked(newChecked === "indeterminate" ? false : newChecked)} />
                 <Label htmlFor="terms" className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 select-none">
                   <Link href={"/terms"} className="underline">利用規約</Link>に同意します。
                 </Label>
