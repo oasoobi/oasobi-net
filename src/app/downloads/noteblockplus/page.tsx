@@ -48,6 +48,13 @@ export default function Home() {
     fetchRelease();
   }, [])
 
+  useEffect(() => {
+    // ページがマウントされたときに実行されるコード
+    if (window.location.hash) {
+      window.location.hash = '';
+    }
+  }, []);
+
   return (
     <main className="min-h-lvh pt-14 ">
       <Head>

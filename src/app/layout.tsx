@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
-
+import { useEffect } from "react";
+import { useTheme } from 'next-themes';
 import "./globals.css";
 import Header from "@/components/Header";
 import FooterLinks from "@/components/FooterLinks"
@@ -25,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={NotoSansJP.className}>
-        <NextTopLoader shadow={false} showSpinner={false} height={2} />
+        <NextTopLoader showSpinner={false} height={1.6} color={"#0073ff"} />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
