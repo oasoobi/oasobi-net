@@ -19,7 +19,7 @@ export const Header = () => {
     const setTheme = useTheme();
     return (
         <div className={`header py-1 px-10 flex items-center justify-between fixed w-screen backdrop-blur-lg bg-transparent`} >
-            <Link href="/" className='font-medium text-xl select-none'>
+            <Link href="/" className='font-medium text-xl select-none' translate='no'>
                 おあそび
             </Link>
             <div className='flex gap-4 items-center select-none'>
