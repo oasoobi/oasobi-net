@@ -32,6 +32,7 @@ export default function Home() {
   };
 
   useEffect(() => {
+    document.title = "NoteBlock+ | oasobi";
     async function fetchRelease() {
       const response = await fetch("https://api.github.com/repos/oasoobi/noteblockplus/releases");
       const releases = await response.json();
@@ -55,10 +56,10 @@ export default function Home() {
     }
   }, []);
 
+
   return (
     <main className="min-h-lvh pt-14 ">
       <Head>
-        <title>Note Block+ | oasobi</title>
         <meta name="description" content="マインクラフト統合版で音ブロックの音階や音の種類の確認ができるようになるアドオンです。" />
       </Head>
       <div className="flex items-center justify-center h-full w-[80%] ml-[10%] mr-[10%]">
