@@ -66,7 +66,7 @@ export default function Home() {
         <div className="pt-10">
           <div className="flex items-center gap-2">
             <Image src="/noteblock.svg" alt="" width={40} height={40} className="pointer-events-none select-none pixelated" />
-            <h1 className="text-4xl font-bold">Noteblock+</h1>
+            <h1 className="text-4xl font-bold">NoteBlock+</h1>
           </div>
           <h2 className="text-xl mt-5">マイクラ統合版で音ブロックの音階を表示するアドオン。</h2>
           <div className="md:flex mt-3 gap-5">
