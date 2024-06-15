@@ -17,10 +17,14 @@ import { useEffect, useState } from "react"
 import { Metadata } from "next";
 import Head from "next/head";
 import "../../globals.css"
+import { strict } from "assert";
+import { CodeIcon, DownloadIcon } from "@radix-ui/react-icons";
 
 export default function Home() {
   const [totalDownloads, setTotalDownloads] = useState<number | null>(null);
   const [latestVersion, setLatestVersion] = useState<string | null>(null);
+  const [supportedVersion, setSupportedVersion] = useState<string | null>(null);
+  const [lastUpdated, setLastUpdated] = useState<string | null>(null);
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const downloadFile = () => {
     const url = 'https://github.com/oasoobi/noteblockplus/releases/latest/download/noteblockplus.mcpack';
@@ -46,7 +50,17 @@ export default function Home() {
       setTotalDownloads(totalDownloadCount);
       setLatestVersion(latestVersion);
     }
+    async function fetchVersions() {
+      const response = await fetch("https://raw.githubusercontent.com/oasoobi/noteblockplus/main/versions.json");
+      const versions = await response.text();
+
+      let lastUpdated = JSON.parse(versions)?.lastUpdated;
+      let supportedVersion = JSON.parse(versions)?.supported;
+      setLastUpdated(lastUpdated);
+      setSupportedVersion(supportedVersion);
+    }
     fetchRelease();
+    fetchVersions();
   }, [])
 
   useEffect(() => {
@@ -55,7 +69,6 @@ export default function Home() {
       window.location.hash = '';
     }
   }, []);
-
 
   return (
     <main className="min-h-lvh pt-14 ">
@@ -70,9 +83,15 @@ export default function Home() {
           </div>
           <h2 className="text-xl mt-5">マイクラ統合版で音ブロックの音階を表示するアドオン。</h2>
           <div className="md:flex mt-3 gap-5">
-            <p>Supported: 1.21.x</p>
-            <p>Last Updated: 2024 6/14</p>
+            <p>Supported: {supportedVersion}</p>
+            <p>Last Updated: {lastUpdated}</p>
             <p>Latest: {latestVersion}</p>
+
+            <Link className="flex items-center underline" href={"https://github.com/oasoobi/noteblockplus/issues"}>
+              <svg className="mr-0.5" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+              バグ報告 / 要望
+            </Link>
+
           </div>
           <div className="mt-10">
             <h1 className="text-4xl font-bold">⚠ 注意</h1>
