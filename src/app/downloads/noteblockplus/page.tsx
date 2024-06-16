@@ -94,12 +94,14 @@ export default function Home() {
 
           </div>
           <div className="mt-10">
-            <h1 className="text-4xl font-bold">⚠ 注意</h1>
-            <p className="mt-5">マインクラフトのバージョンが更新されると、動かなくなる可能性があります。必ず更新を確認してください。</p>
-            <p>初期の言語は英語です。設定から日本語に変更できます。<Link href={"#setting"} className="underline">変更方法</Link></p>
-            <p>ベータAPI、ホリデークリエイターの特徴を有効にしてから、アドオンを入れてください。</p>
-            <div className="flex items-center justify-center">
-              <Image src="/please_enable.png" width={600} height={60} alt="" className="mt-3 rounded-md pointer-events-none select-none" />
+            <div className=" bg-[#e0e26cbf] rounded-md pl-4 pr-3 pb-4 pt-3 border border-solid break-words	">
+              <h1 className="text-4xl font-bold mb-5">⚠ 注意</h1>
+              <p>マインクラフトのバージョンが更新されると、動かなくなる可能性があります。必ず更新を確認してください。</p>
+              <p>初期の言語は英語です。設定から日本語に変更できます。<Link href={"#setting"} className="underline">変更方法</Link></p>
+              <p>ベータAPI、ホリデークリエイターの特徴を有効にしてから、アドオンを入れてください。</p>
+              <div className="flex items-center justify-center">
+                <Image src="/please_enable.png" width={600} height={60} alt="" className="mt-3 rounded-md pointer-events-none select-none" />
+              </div>
             </div>
           </div>
           <div className="mt-10">
