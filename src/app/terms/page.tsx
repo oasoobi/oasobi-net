@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="min-h-lvh pt-14">
-      <div className="h-full w-[80%] ml-[15%] mr-[5%]">
+      <div className="h-full w-[80%] ml-[10%] mr-[10%]">
         <h1 className="text-3xl font-bold mb-4">利用規約</h1>
           <h1 className="text-2xl font-bold mb-4 mt-10">要約</h1>
           <p>商用利用しないでね。(youtubeなどの収益化はok)</p>
