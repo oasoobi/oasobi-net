@@ -11,7 +11,7 @@ export default function Home() {
       <div className="flex items-center justify-center h-full">
         <div className="select-none">
           <h1 className="text-center text-4xl font-bold mb-5">おあそび</h1>
-          <p className="mb-7 text-center">プログラミングとマイクラが好きな人です。</p>
+          <p className="mb-7 text-center">プログラミングとマイクラが好きです。</p>
           <div className="flex item-center justify-center gap-6">
             <a href="https://m.youtube.com/@おあそび" target="_blank" rel="noopener noreferrer"><Button>Youtube</Button></a>
             <a href="https://twitter.com/oasoby" target="_blank" rel="noopener noreferrer"><Button>Twitter</Button></a>
