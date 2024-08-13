@@ -94,7 +94,7 @@ export default function Home() {
 
           </div>
           <div className="mt-10">
-            <div className="pl-4 pr-3 pb-4 pt-3">
+            <div className="pb-4 pt-3">
               <h1 className="text-4xl font-bold mb-5">⚠ 注意</h1>
               <p>マインクラフトのバージョンが更新されると、動かなくなる可能性があります。必ず更新を確認してください。</p>
               <p>初期の言語は英語です。設定から日本語に変更できます。<Link href={"#setting"} className="underline">変更方法</Link></p>
