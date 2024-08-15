@@ -98,7 +98,7 @@ export default function Home() {
               <h1 className="text-4xl font-bold mb-5">⚠ 注意</h1>
               <p>マインクラフトのバージョンが更新されると、動かなくなる可能性があります。必ず更新を確認してください。</p>
               <p>初期の言語は英語です。設定から日本語に変更できます。<Link href={"#setting"} className="underline">変更方法</Link></p>
-              <p>ベータAPI、ホリデークリエイターの特徴を有効にしてから、アドオンを入れてください。</p>
+              <p>ベータAPIを有効にしてから、アドオンを入れてください。(ホリデークリエイターの特徴は1.21.20で削除されました。)</p>
               <div className="flex items-center justify-center">
                 <Image src="/please_enable.png" width={600} height={60} alt="" className="mt-3 rounded-md pointer-events-none select-none" />
               </div>
