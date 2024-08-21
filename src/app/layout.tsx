@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
+    <html lang="ja" suppressHydrationWarning={true}>
       <body className={NotoSansJP.className}>
         <NextTopLoader showSpinner={false} height={1.6} color={"#0073ff"} />
         <ThemeProvider
