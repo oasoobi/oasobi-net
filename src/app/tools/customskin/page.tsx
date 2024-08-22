@@ -8,6 +8,8 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
+
 import SkinCard from "@/components/tools/csg/skin-card";
 import { useRef } from "react";
 
@@ -36,20 +38,22 @@ type FormSkin = {
     geometry: boolean,
     texture?: File | undefined
     cape?: File | undefined
+    uuid?: string | undefined
 }
 
-type Images = {
-    skin_img: string,
-    cape_img: string
-}
 export default function Home() {
     const textureRef = useRef<HTMLInputElement>(null);
     const capeRef = useRef<HTMLInputElement>(null);
     const [skins, setSkins] = useState<Skin[]>([]);
     const [formSkins, setFormSkins] = useState<FormSkin[]>([]);
     function onSubmit(data: FormSkin) {
-
-        console.log(data);
+        const newData = {
+            localization_name: data.localization_name,
+            geometry: data.geometry,
+            texture: data.texture,
+            cape: data.cape,
+            uuid: uuidv4()
+        }
 
         const skin: Skin = {
             "localization_name": data.localization_name,
@@ -58,6 +62,9 @@ export default function Home() {
             ...(data.cape && { "cape": data.cape.name }),
             "type": "free"
         }
+        setSkins([...skins, skin]);
+        setFormSkins([...formSkins, newData]);
+
         form.reset({
             "localization_name": "",
             "geometry": false,
@@ -65,8 +72,11 @@ export default function Home() {
             "cape": undefined
         })
 
-        setSkins([...skins, skin]);
-        setFormSkins([...formSkins, data]);
+        if (textureRef.current) textureRef.current.value = ""; //ファイルの方も初期化
+        if (capeRef.current) capeRef.current.value = "";
+
+        console.log(formSkins);
+
     }
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -78,15 +88,29 @@ export default function Home() {
         }
     });
 
+    const deleteSkin = (uuid: string, texture: string, cape: string | undefined) => {
+        console.log(uuid, formSkins);
+        const newFormSkins = [...formSkins];
+        const newSkins = [...skins];
+        URL.revokeObjectURL(texture);
+        if (cape !== undefined) URL.revokeObjectURL(cape);
+        const index = formSkins.findIndex(skin => skin.uuid === uuid);
+        newFormSkins.splice(index, 1); // 該当する要素を削除
+        newSkins.splice(index, 1);
+        setFormSkins(newFormSkins);
+        setSkins(newSkins);
+    }
+
     return (
         <main className="h-lvh pt-[6rem] w-screen flex justify-center">
             <div className="pl-5 pr-5 lg:pl-20 lg:pr-20 lg:w-3/4">
                 <div className="select-none">
                     <h1 className="text-3xl font-bold mb-5">Skin Pack Generator</h1>
                     <Input placeholder="スキンパック名" className="w-full" />
-                    <div className="">
+                    <div className="flex mt-5">
+                        {formSkins.map(skin => <SkinCard skin={skin} deletefunc={deleteSkin} key={skin.uuid} />)}
                     </div>
-                    <div className="border p-6 rounded-lg mt-10">
+                    <div className="border p-6 rounded-lg mt-5">
                         <Form {...form}>
                             <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
                                 <div className="space-y-4">
@@ -125,7 +149,7 @@ export default function Home() {
                                                     <FormControl>
                                                         <Input type='file' accept='.png' {...fieldProps} onChange={(event) => {
                                                             onChange(event.target.files && event.target.files[0])
-                                                        }} className='w-3/5'></Input>
+                                                        }} className='w-3/5' ref={textureRef}></Input>
                                                     </FormControl>
                                                 </FormItem>
                                             </>
@@ -148,7 +172,7 @@ export default function Home() {
                                                         <Input type='file' accept='.png' {...fieldProps} onChange={(event) => {
                                                             console.log(event.target.files && event.target.files[0]);
                                                             onChange(event.target.files && event.target.files[0])
-                                                        }} className='w-3/5' ref={textureRef}></Input>
+                                                        }} className='w-3/5' ref={capeRef}></Input>
                                                     </FormControl>
                                                 </FormItem>
                                             </>
