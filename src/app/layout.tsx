@@ -25,6 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" suppressHydrationWarning={true}>
+      <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+      </head>
       <body className={NotoSansJP.className}>
         <NextTopLoader showSpinner={false} height={1.6} color={"#0073ff"} />
         <ThemeProvider
