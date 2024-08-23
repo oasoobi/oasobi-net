@@ -21,7 +21,6 @@ import { strict } from "assert";
 import { CodeIcon, DownloadIcon } from "@radix-ui/react-icons";
 
 export default function Home() {
-  document.title = "NoteBlock+ | oasobi"
   const [totalDownloads, setTotalDownloads] = useState<number | null>(null);
   const [latestVersion, setLatestVersion] = useState<string | null>(null);
   const [supportedVersion, setSupportedVersion] = useState<string | null>(null);
@@ -72,9 +71,8 @@ export default function Home() {
 
   return (
     <main className="min-h-lvh pt-14 ">
-      <Head>
-        <meta name="description" content="マインクラフト統合版で音ブロックの音階や音の種類の確認ができるようになるアドオンです。" />
-      </Head>
+      <title>NoteBlock+ | oasobi</title>
+      <meta name="description" content="マインクラフト統合版で音ブロックの音階や音の種類の確認ができるようになるアドオンです。" />
       <div className="flex items-center justify-center h-full w-[80%] ml-[10%] mr-[10%]">
         <div className="pt-10">
           <div className="flex items-center gap-2">
