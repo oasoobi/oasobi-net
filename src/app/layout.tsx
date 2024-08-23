@@ -25,10 +25,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <>
+    <Head>
+      <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+    </Head>
     <html lang="ja" suppressHydrationWarning={true}>
-      <Head>
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
-      </Head>
       <body className={NotoSansJP.className}>
         <NextTopLoader showSpinner={false} height={1.6} color={"#0073ff"} />
         <ThemeProvider
@@ -43,5 +44,6 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
+    </>
   );
 }
