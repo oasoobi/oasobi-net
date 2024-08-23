@@ -2,17 +2,36 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
+import {Card, CardHeader, CardDescription, CardContent, CardTitle} from "@/components/ui/card"
 export const metadata: Metadata = {
   title: "Tools"
 };
 export default function Home() {
   return (
-    <main className="h-lvh">
-      <div className="flex items-center justify-center h-full">
-        <div className="select-none">
-          <h1 className="text-center text-4xl font-bold mb-5">Nothing</h1>
+    <main className="min-h-lvh pt-14">
+        <div className="select-none ml-[2%] mr-[2%] w-[80%] mb-10">
+          <h1 className="text-3xl font-bold mb-5">ツール</h1>
+          <h1 className="text-2xl ml-2 font-bold mt-2 mb-2">マイクラ</h1>
+          <div>
+
+          </div>
+          <Card className="w-[19rem]">
+            <CardHeader>
+              <CardTitle>
+                <div className="flex items-center">
+                  {/* <Image src="/noteblock.svg" width={30} height={30} alt="" className="mr-2 select-none pointer-events-none" /> */}
+                  Skin Pack Generator
+                </div>
+              </CardTitle>
+              <CardDescription>マント付きのスキンパックを作成できます。</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Link href={"/tools/customskin"}>
+                <Button className="flex items-center w-full h-full">詳細を見る</Button>
+              </Link>
+            </CardContent>
+          </Card>
         </div>
-      </div>
     </main>
   );
 }

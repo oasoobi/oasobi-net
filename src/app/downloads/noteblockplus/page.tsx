@@ -21,6 +21,7 @@ import { strict } from "assert";
 import { CodeIcon, DownloadIcon } from "@radix-ui/react-icons";
 
 export default function Home() {
+  document.title = "NoteBlock+ | oasobi"
   const [totalDownloads, setTotalDownloads] = useState<number | null>(null);
   const [latestVersion, setLatestVersion] = useState<string | null>(null);
   const [supportedVersion, setSupportedVersion] = useState<string | null>(null);
@@ -36,7 +37,6 @@ export default function Home() {
   };
 
   useEffect(() => {
-    document.title = "NoteBlock+ | oasobi";
     async function fetchRelease() {
       const response = await fetch("https://api.github.com/repos/oasoobi/noteblockplus/releases");
       const releases = await response.json();
