@@ -7,6 +7,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import FooterLinks from "@/components/FooterLinks"
 import NextTopLoader from "nextjs-toploader";
+import Head from 'next/head';
 
 const NotoSansJP = Noto_Sans_JP({ subsets: ["latin"] });
 
@@ -25,9 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" suppressHydrationWarning={true}>
-      <head>
+      <Head>
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
-      </head>
+      </Head>
       <body className={NotoSansJP.className}>
         <NextTopLoader showSpinner={false} height={1.6} color={"#0073ff"} />
         <ThemeProvider
