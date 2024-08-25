@@ -73,7 +73,7 @@ export default function Home() {
     <main className="min-h-lvh pt-14 ">
       <title>NoteBlock+ | oasobi</title>
       <meta name="description" content="マインクラフト統合版で音ブロックの音階や音の種類の確認ができるようになるアドオンです。" />
-      <div className="flex items-center justify-center h-full w-[94%] ml-[3%] mr-[3%]">
+      <div className="flex items-center justify-center h-full w-[88%] ml-[6%] mr-[6%]">
         <div className="pt-10">
           <div className="flex items-center gap-2">
             <Image src="/noteblock.svg" alt="" width={40} height={40} className="pointer-events-none select-none pixelated" />
