@@ -6,8 +6,15 @@ import { useTheme } from 'next-themes';
 import "./globals.css";
 import Header from "@/components/Header";
 import FooterLinks from "@/components/FooterLinks"
-import NextTopLoader from "nextjs-toploader";
-import Head from 'next/head';
+import NextTopLoader from "nextjs-toploader"
+import type { Viewport } from 'next'
+ 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false
+}
 
 const NotoSansJP = Noto_Sans_JP({ subsets: ["latin"] });
 
@@ -25,10 +32,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
-    <Head>
-      <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"/>
-    </Head>
     <html lang="ja" suppressHydrationWarning={true}>
       <body className={NotoSansJP.className}>
         <NextTopLoader showSpinner={false} height={1.6} color={"#0073ff"} />
@@ -44,6 +47,5 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
-    </>
   );
 }
