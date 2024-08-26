@@ -58,7 +58,7 @@ export default function Home() {
 	}
 
 	async function handleDownload() {
-		if (isGenerating) return toast.error("生成中です。", {id:"generating_now", duration: 1000});
+		if (isGenerating) return;
 		if (packName == "") {
 			packNameRef.current?.focus();
 			toast.error("パック名を指定してください。", { duration: 1000, id: "not_written" });
@@ -67,7 +67,7 @@ export default function Home() {
 		if (skins.length < 1) return toast.error("スキンが追加されていません。", { duration: 1000, id: "not_added" });
 		setIsGenerating(true);
 		const toastId = toast.loading('ファイル生成中...');
-		await sleep(1000)
+		await sleep(800)
 		const persona = new JSZip();
 
 		persona.file("manifest.json", `
