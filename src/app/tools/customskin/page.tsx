@@ -477,7 +477,7 @@ export default function Home() {
 		<main className="min-h-svh pt-[6rem] w-screen flex justify-center">
 			<div>
 				<title>SkinPackGenerator | oasobi</title>
-				<meta name="description" content="マイクラ統合版向けのマント付きのスキンパックを生成するツールｌ" />
+				<meta name="description" content="マイクラ統合版向けのマント付きのスキンパックを生成するツール" />
 			</div>
 			<Toaster />
 			<div className="pl-5 pr-5 w-full lg:pl-20 lg:pr-20 lg:w-3/4">
