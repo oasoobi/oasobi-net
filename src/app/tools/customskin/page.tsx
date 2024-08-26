@@ -578,7 +578,7 @@ export default function Home() {
 										)}
 									/>
 									<div className='flex items-center gap-3'>
-										<Button type='submit'>スキンを追加</Button>
+										<Button type='submit' disabled={isGenerating}>スキンを追加</Button>
 										<Button variant={"outline"} type="reset">リセット</Button>
 									</div>
 								</div>
