@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
 import "../../globals.css"
-import {Download} from "@/components/downloads/dl-button";
+import { Download } from "@/components/downloads/dl-button";
 
 export const metadata: Metadata = {
   title: "NoteBlock+",
@@ -11,20 +11,20 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const releasesRes = await fetch("https://api.github.com/repos/oasoobi/noteblockplus/releases");
+  const releasesRes = await fetch("https://api.github.com/repos/oasoobi/noteblockplus/releases", { cache: 'no-store' });
   const releases = await releasesRes.json();
-  let latestVersion:string = releases[0]?.name;
-  let totalDownloadCount:number = 0;
+  let latestVersion: string = releases[0]?.name;
+  let totalDownloadCount: number = 0;
   releases.forEach((release: { assets: { download_count: number }[] }) => {
     release.assets.forEach((asset: { download_count: number }) => {
       totalDownloadCount += asset.download_count;
     });
   });
-  const versionsRes = await fetch("https://raw.githubusercontent.com/oasoobi/noteblockplus/main/versions.json");
+  const versionsRes = await fetch("https://raw.githubusercontent.com/oasoobi/noteblockplus/main/versions.json", { cache: 'no-store' });
   const versions = await versionsRes.text();
 
-  let lastUpdated:string = JSON.parse(versions)?.lastUpdated;
-  let supportedVersion:string = JSON.parse(versions)?.supported;
+  let lastUpdated: string = JSON.parse(versions)?.lastUpdated;
+  let supportedVersion: string = JSON.parse(versions)?.supported;
 
   return (
     <main className="min-h-svh pt-[3rem] pb-[1.2rem] lg:pb-0 lg:pt-[6rem] ">
@@ -84,7 +84,7 @@ export default async function Home() {
           <div className="mt-10">
             <h1 className="text-4xl font-bold">ダウンロード</h1>
             <div className="mt-5">
-              <Download dlCount={totalDownloadCount}/>
+              <Download dlCount={totalDownloadCount} />
             </div>
           </div>
         </div>
