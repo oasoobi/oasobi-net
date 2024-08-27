@@ -14,10 +14,11 @@ import {
     CardHeader,
 } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-export const card = ({ skin, textureUrl, capeUrl, deletefunc }: {
+export const card = ({ skin, textureUrl, capeUrl, disabled, deletefunc }: {
     skin: Skin;
     textureUrl: string | undefined
     capeUrl: string | undefined
+    disabled: boolean
     deletefunc: (uuid: string, texture: string, cape: string | undefined) => void;
 }) => {
 
@@ -27,7 +28,7 @@ export const card = ({ skin, textureUrl, capeUrl, deletefunc }: {
                 <div>
                     <div className='flex items-center justify-between'>
                         <p>{skin.localization_name}</p>
-                        <Button variant={"ghost"} onClick={() => { deletefunc(skin.uuid ? skin.uuid : "", textureUrl ? textureUrl : "", capeUrl) }}>
+                        <Button variant={"ghost"} onClick={() => { deletefunc(skin.uuid ? skin.uuid : "", textureUrl ? textureUrl : "", capeUrl) }} disabled={disabled}>
                             <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
                         </Button>
                     </div>

@@ -58,7 +58,6 @@ export default function Home() {
 	}
 
 	async function handleDownload() {
-		if (isGenerating) return;
 		if (packName == "") {
 			packNameRef.current?.focus();
 			toast.error("パック名を指定してください。", { duration: 1000, id: "not_written" });
@@ -485,11 +484,11 @@ export default function Home() {
 					<h1 className="text-3xl font-bold mb-5">Skin Pack Generator</h1>
 					<div className="flex gap-2">
 						<Input placeholder="スキンパック名" className="w-full" value={packName} onChange={(e) => { setPackName(e.currentTarget.value) }} ref={packNameRef} />
-						<Button onClick={handleDownload}>ダウンロード</Button>
+						<Button onClick={handleDownload} disabled={isGenerating}>ダウンロード</Button>
 					</div>
 
 					<div className="flex mt-5 overflow-x-scroll w-auto gap-3 scrollbar">
-						{formSkins.map((skin, index) => <SkinCard skin={skin} deletefunc={deleteSkin} textureUrl={skinImages[index]} capeUrl={capeImages[index]} key={skin.uuid} />)}
+						{formSkins.map((skin, index) => <SkinCard disabled={isGenerating} skin={skin} deletefunc={deleteSkin} textureUrl={skinImages[index]} capeUrl={capeImages[index]} key={skin.uuid} />)}
 					</div>
 					<div className="border p-4 rounded-lg mt-5">
 						<Form {...form}>
