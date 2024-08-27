@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const releasesRes = await fetch("https://api.github.com/repos/oasoobi/noteblockplus/releases", { cache: 'no-store' });
+  const releasesRes = await fetch("https://api.github.com/repos/oasoobi/noteblockplus/releases", { next: { revalidate: 0 } });
   const releases = await releasesRes.json();
   let latestVersion: string = releases[0]?.name;
   let totalDownloadCount: number = 0;
@@ -20,7 +20,7 @@ export default async function Home() {
       totalDownloadCount += asset.download_count;
     });
   });
-  const versionsRes = await fetch("https://raw.githubusercontent.com/oasoobi/noteblockplus/main/versions.json", { cache: 'no-store' });
+  const versionsRes = await fetch("https://raw.githubusercontent.com/oasoobi/noteblockplus/main/versions.json", { next: { revalidate: 0 } });
   const versions = await versionsRes.text();
 
   let lastUpdated: string = JSON.parse(versions)?.lastUpdated;

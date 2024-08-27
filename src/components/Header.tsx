@@ -18,7 +18,7 @@ import NextTopLoader from "nextjs-toploader"
 import { useEffect, useState } from 'react'
 
 export const Header = () => {
-    const {setTheme, theme, resolvedTheme} = useTheme();
+    const {resolvedTheme} = useTheme();
     const [color, setColor] = useState<string>("");
     useEffect(() => {
         setColor(resolvedTheme == "light" ? "#000000" : "#ffffff");
