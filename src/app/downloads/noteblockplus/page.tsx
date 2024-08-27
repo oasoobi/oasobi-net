@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "NoteBlock+",
   description: "音ブロックの音階や音の種類の確認をできるようにするマインクラフト統合版向けのアドオン。"
 };
+export const runtime = 'edge';
 
 export default async function Home() {
   const releasesRes = await fetch("https://api.github.com/repos/oasoobi/noteblockplus/releases", { next: { revalidate: 0 } });
