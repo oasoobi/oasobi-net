@@ -1,85 +1,41 @@
-"use client"
 
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Label } from "@/components/ui/label"
-import { useEffect, useState } from "react"
 import { Metadata } from "next";
-import Head from "next/head";
 import "../../globals.css"
-import { strict } from "assert";
-import { CodeIcon, DownloadIcon } from "@radix-ui/react-icons";
+import {Download} from "@/components/downloads/dl-button";
 
-export default function Home() {
-  const [totalDownloads, setTotalDownloads] = useState<number | null>(null);
-  const [latestVersion, setLatestVersion] = useState<string | null>(null);
-  const [supportedVersion, setSupportedVersion] = useState<string | null>(null);
-  const [lastUpdated, setLastUpdated] = useState<string | null>(null);
-  const [isChecked, setIsChecked] = useState<boolean>(false);
-  const downloadFile = () => {
-    const url = 'https://github.com/oasoobi/noteblockplus/releases/latest/download/noteblockplus.mcpack';
-    const a = document.createElement('a');
-    a.href = url;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  };
+export const metadata: Metadata = {
+  title: "NoteBlock+",
+  description: "利用規約"
+};
 
-  useEffect(() => {
-    async function fetchRelease() {
-      const response = await fetch("https://api.github.com/repos/oasoobi/noteblockplus/releases");
-      const releases = await response.json();
-      let latestVersion = releases[0]?.name;
-      let totalDownloadCount = 0;
-      releases.forEach((release: { assets: { download_count: number }[] }) => {
-        release.assets.forEach((asset: { download_count: number }) => {
-          totalDownloadCount += asset.download_count;
-        });
-      });
-      setTotalDownloads(totalDownloadCount);
-      setLatestVersion(latestVersion);
-    }
-    async function fetchVersions() {
-      const response = await fetch("https://raw.githubusercontent.com/oasoobi/noteblockplus/main/versions.json");
-      const versions = await response.text();
+export default async function Home() {
+  const releasesRes = await fetch("https://api.github.com/repos/oasoobi/noteblockplus/releases");
+  const releases = await releasesRes.json();
+  let latestVersion:string = releases[0]?.name;
+  let totalDownloadCount:number = 0;
+  releases.forEach((release: { assets: { download_count: number }[] }) => {
+    release.assets.forEach((asset: { download_count: number }) => {
+      totalDownloadCount += asset.download_count;
+    });
+  });
+  const versionsRes = await fetch("https://raw.githubusercontent.com/oasoobi/noteblockplus/main/versions.json");
+  const versions = await versionsRes.text();
 
-      let lastUpdated = JSON.parse(versions)?.lastUpdated;
-      let supportedVersion = JSON.parse(versions)?.supported;
-      setLastUpdated(lastUpdated);
-      setSupportedVersion(supportedVersion);
-    }
-    fetchRelease();
-    fetchVersions();
-  }, [])
-
-  useEffect(() => {
-    // ページがマウントされたときに実行されるコード
-    if (window.location.hash) {
-      window.location.hash = '';
-    }
-  }, []);
+  let lastUpdated:string = JSON.parse(versions)?.lastUpdated;
+  let supportedVersion:string = JSON.parse(versions)?.supported;
 
   return (
-    <main className="min-h-lvh pt-14 ">
-      <title>NoteBlock+ | oasobi</title>
+    <main className="min-h-svh pt-[6rem] ">
       <meta name="description" content="マインクラフト統合版で音ブロックの音階や音の種類の確認ができるようになるアドオンです。" />
       <div className="flex items-center justify-center h-full w-[88%] ml-[6%] mr-[6%]">
-        <div className="pt-10">
+        <div className="pt-10 mb-10">
           <div className="flex items-center gap-2">
             <Image src="/noteblock.svg" alt="" width={40} height={40} className="pointer-events-none select-none pixelated" />
             <h1 className="text-4xl font-bold">NoteBlock+</h1>
           </div>
-          <h2 className="text-xl mt-5">マイクラ統合版で音ブロックの音階を表示するアドオン。</h2>
+          <h2 className="text-lg mt-5">マイクラ統合版で音ブロックの音階を表示するアドオン。</h2>
           <div className="md:flex mt-3 gap-5">
             <p>Supported: {supportedVersion}</p>
             <p>Last Updated: {lastUpdated}</p>
@@ -94,7 +50,7 @@ export default function Home() {
           <div className="mt-10">
             <div className="pb-4 pt-3">
               <h1 className="text-4xl font-bold mb-5">⚠ 注意</h1>
-              <ul className="list-disc ml-[1rem]">
+              <ul className="list-disc ml-[1.3rem]">
                 <li>マインクラフトのバージョンが更新されると、動かなくなる可能性があります。必ず更新を確認してください。</li>
                 <li>初期の言語は英語です。設定から日本語に変更できます。<Link href={"#setting"} className="underline">変更方法</Link></li>
                 <li>ベータAPIを有効にしてから、アドオンを入れてください。(ホリデークリエイターの特徴は1.21.20で削除されました。)</li>
@@ -129,14 +85,7 @@ export default function Home() {
           <div className="mt-10">
             <h1 className="text-4xl font-bold">ダウンロード</h1>
             <div className="mt-5">
-              <div className="flex items-center space-x-2 mb-4">
-                <Checkbox id="terms" checked={isChecked} onCheckedChange={(newChecked) => setIsChecked(newChecked === "indeterminate" ? false : newChecked)} />
-                <Label htmlFor="terms" className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 select-none">
-                  <Link href={"/terms"} className="underline">利用規約</Link>に同意します。
-                </Label>
-              </div>
-
-              <Button disabled={!isChecked} className="w-full mt-[2rem] mb-[5rem] select-none" onClick={downloadFile}>ダウンロード {totalDownloads}</Button>
+              <Download dlCount={totalDownloadCount}/>
             </div>
           </div>
         </div>
