@@ -27,9 +27,9 @@ export default async function Home() {
   let supportedVersion:string = JSON.parse(versions)?.supported;
 
   return (
-    <main className="min-h-svh pt-[6rem] ">
+    <main className="min-h-svh pt-[3rem] pb-[1.2rem] lg:pb-0 lg:pt-[6rem] ">
       <div className="flex items-center justify-center h-full w-[88%] ml-[6%] mr-[6%]">
-        <div className="pt-10 mb-10">
+        <div className="pt-5 mb-5 lg:pt-10 lg:mb-10">
           <div className="flex items-center gap-2">
             <Image src="/noteblock.svg" alt="" width={40} height={40} className="pointer-events-none select-none pixelated" />
             <h1 className="text-4xl font-bold">NoteBlock+</h1>
@@ -49,7 +49,7 @@ export default async function Home() {
           <div className="mt-10">
             <div className="pb-4 pt-3">
               <h1 className="text-4xl font-bold mb-5">⚠ 注意</h1>
-              <ul className="list-disc ml-[1.3rem]">
+              <ul className="list-disc ml-[1.8rem]">
                 <li>マインクラフトのバージョンが更新されると、動かなくなる可能性があります。必ず更新を確認してください。</li>
                 <li>初期の言語は英語です。設定から日本語に変更できます。<Link href={"#setting"} className="underline">変更方法</Link></li>
                 <li>ベータAPIを有効にしてから、アドオンを入れてください。(ホリデークリエイターの特徴は1.21.20で削除されました。)</li>
