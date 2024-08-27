@@ -7,7 +7,7 @@ import {Download} from "@/components/downloads/dl-button";
 
 export const metadata: Metadata = {
   title: "NoteBlock+",
-  description: "利用規約"
+  description: "音ブロックの音階や音の種類の確認をできるようにするマインクラフト統合版向けのアドオン。"
 };
 
 export default async function Home() {
@@ -28,7 +28,6 @@ export default async function Home() {
 
   return (
     <main className="min-h-svh pt-[6rem] ">
-      <meta name="description" content="マインクラフト統合版で音ブロックの音階や音の種類の確認ができるようになるアドオンです。" />
       <div className="flex items-center justify-center h-full w-[88%] ml-[6%] mr-[6%]">
         <div className="pt-10 mb-10">
           <div className="flex items-center gap-2">
