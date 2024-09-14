@@ -10,14 +10,6 @@ export default function Home() {
   return (
     <main className="min-h-lvh pt-14">
       <div className="h-full w-[88%] ml-[6%] mr-[6%]">
-        <h1 className="text-3xl font-bold mb-4">利用規約</h1>
-          <h1 className="text-2xl font-bold mb-4 mt-10">要約</h1>
-          <p>この規約はこのサイトから何かしらダウンロードした人に適用されるよ。</p>
-          <p>商用利用しないでね。(youtubeなどの収益化はok)</p>
-          <p>そのまま二次配布しないでね。(改変した場合はok)</p>
-          <p>※改変した場合でも、クレジットに配布先のURLを載せてね。</p>
-          <p>自作発言はしないでね。</p>
-        
         <div>
           <h1 className="text-2xl font-bold mt-10 mb-4">利用規約</h1>
           <p>この利用規約は(以下「本規約」といいます。)は、<Link href={"/"} className="underline">oasoobi.net</Link>(以下「本サイト」といいます。)でダウンロードしたコンテンツ(以下「コンテンツ」といいます。)の利用条件を定めるものです。</p>
