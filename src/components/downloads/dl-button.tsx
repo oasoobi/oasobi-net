@@ -26,7 +26,7 @@ export const Download = ({dlCount}: {dlCount: number}) => {
                     <Link href={"/terms"} className="underline">利用規約</Link>に同意します。
                 </Label>
             </div>
-            <Button disabled={!isChecked} className="w-full mt-[2rem] mb-[5rem] select-none" onClick={downloadFile}>ダウンロード {dlCount}</Button>
+            <Button disabled={!isChecked} className="w-full mt-[1.2rem] mb-[5rem] select-none" onClick={downloadFile}>ダウンロード {dlCount}</Button>
         </div>
     )
 }

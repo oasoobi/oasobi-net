@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="min-h-lvh pt-14">
-      <div className="h-full w-[80%] ml-[10%] mr-[10%]">
+      <div className="h-full w-[88%] ml-[6%] mr-[6%]">
         <h1 className="text-3xl font-bold mb-4">利用規約</h1>
           <h1 className="text-2xl font-bold mb-4 mt-10">要約</h1>
           <p>この規約はこのサイトから何かしらダウンロードした人に適用されるよ。</p>
@@ -26,21 +26,21 @@ export default function Home() {
 
         <h1 className="text-2xl mb-4 font-bold">利用規約の適用</h1>
         <ul className="list-decimal mb-10">
-          <li className="ml-[2rem]">当サイトのコンテンツをダウンロードすることで、利用者は本規約に同意したものとみなされます。</li>
+          <li className="ml-[1.2rem]">当サイトのコンテンツをダウンロードすることで、利用者は本規約に同意したものとみなされます。</li>
         </ul>
         <h1 className="text-2xl mb-4 font-bold">禁止行為</h1>
         <ul className="list-decimal mb-10">
-          <li className="ml-[2rem]">改変せずに、コンテンツを二次配布をすること。(改変した場合でも、必ずクレジットに当サイトのリンクを書いてください。)</li>
-          <li className="ml-[2rem]">コンテンツの自作発言をすること。</li>
-          <li className="ml-[2rem]">商用利用すること。(youtubeなどの収益化はOK)</li>
-          <li className="ml-[2rem]">その他、当サイトが不適切と判断した行為。</li>
+          <li className="ml-[1.2rem]">改変せずに、コンテンツを二次配布をすること。(改変した場合でも、必ずクレジットに当サイトのリンクを書いてください。)</li>
+          <li className="ml-[1.2rem]">コンテンツの自作発言をすること。</li>
+          <li className="ml-[1.2rem]">商用利用すること。(youtubeなどの収益化はOK)</li>
+          <li className="ml-[1.2rem]">その他、当サイトが不適切と判断した行為。</li>
         </ul>
         <h1 className="text-2xl mb-4 font-bold">免責事項</h1>
         <p className="mb-10">当サイトは、利用者が当サイトを利用したことによって生じた一切の損害について、一切の責任を負いません。</p>
         <h1 className="text-2xl mb-4 font-bold">利用規約の変更</h1>
         <ul className="list-decimal mb-4">
-          <li className="ml-[2rem]">当サイトは、本規約を随時改定することができるものとします。</li>
-          <li className="ml-[2rem]">改定後の規約は、当サイト上で掲示した時点から効力を生じるものとします。</li>
+          <li className="ml-[1.2rem]">当サイトは、本規約を随時改定することができるものとします。</li>
+          <li className="ml-[1.2rem]">改定後の規約は、当サイト上で掲示した時点から効力を生じるものとします。</li>
         </ul>
       </div>
     </main>
