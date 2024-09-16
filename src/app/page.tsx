@@ -42,7 +42,7 @@ export default function Home() {
               </CardContent>
             </Card>
             </Link>
-            <Link href={"https://discordapp.com/users/1112558111862030427"} className="col-span-2 h-[140px]">
+            <Link href={"https://go.oasoobi.net/Discord"} className="col-span-2 h-[140px]">
             <Card className="py-6 rounded-xl hover:border-[#5765f2] transition-all cursor-pointer">
               <CardContent>
                 <DiscordLogoIcon className="w-[24px] h-[24px]" stroke={"currentColor"} strokeWidth={0.2}/>
