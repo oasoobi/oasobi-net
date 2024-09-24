@@ -32,16 +32,20 @@ export default function RootLayout({
   return (
     <html lang="ja" suppressHydrationWarning={true}>
       <body className={NotoSansJP.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
-          {children}
-          <FooterLinks />
-        </ThemeProvider>
+        <div className="flex flex-col min-h-screen">
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Header />
+            <div className="flex-grow">
+            {children}
+            </div>
+            <FooterLinks />
+          </ThemeProvider>
+        </div>
       </body>
     </html>
   );
