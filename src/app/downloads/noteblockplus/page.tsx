@@ -73,7 +73,7 @@ export const metadata: Metadata = {
 export const runtime = 'edge';
 
 export default async function Home() {
-  const releasesRes = await fetch("http://localhost:3001/releases");
+  const releasesRes = await fetch("https://api.github.com/repos/oasoobi/noteblockplus/releases");
   const releases = await releasesRes.json() as GitHubRelease[];
   let latestVersion: string = releases[0]?.name;
   let totalDownloadCount: number = 0;
