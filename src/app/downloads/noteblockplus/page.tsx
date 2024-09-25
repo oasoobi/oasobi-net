@@ -91,7 +91,7 @@ export default async function Home() {
   return (
     <main className="min-h-svh pt-[3rem] pb-[1.2rem] lg:pb-0 lg:pt-[6rem] ">
       <div className="flex items-center justify-center h-full w-[88%] ml-[6%] mr-[6%]">
-        <div className="pt-5 mb-5 lg:pt-10 lg:mb-10 lg:w-[60%]">
+        <div className="pt-5 mb-5 lg:pt-10 lg:mb-10 lg:w-[70%]">
           <div className="flex items-center gap-2">
             <Image src="/noteblock.svg" alt="" width={40} height={40} className="pointer-events-none select-none pixelated" />
             <h1 className="text-4xl font-bold">NoteBlock+</h1>
