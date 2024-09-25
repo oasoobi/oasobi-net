@@ -16,11 +16,11 @@ export const Download = ({ dlCount, dlURL }: { dlCount: number, dlURL: string })
     };
 
     return (
-        <div className='mb-2 h-[4.5rem] items-center justify-center text-base w-full'>
-                <Label htmlFor="terms" className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 select-none">
+        <div className='items-center justify-center text-base w-full'>
+                <Label className="select-none">
                 ダウンロードすると、<Link href={"/terms"} className="underline">利用規約</Link>に同意したことになります。
                 </Label>
-            <Button className="w-full mt-[1rem] mb-[5rem] select-none" onClick={downloadFile}>ダウンロード {dlCount}</Button>
+            <Button className="w-full mt-[1rem] select-none" onClick={downloadFile}>ダウンロード {dlCount}</Button>
         </div>
     )
 }
