@@ -1,2 +1,2 @@
 User-agent: *
-Disallow: /.well-known/nostr.json
+Disallow: /.well-known/*
