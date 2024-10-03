@@ -150,7 +150,7 @@ export default async function Home() {
                 <TabsContent value="downloads" className="select-none">
                   <div className="pb-4 pt-3">
                     <h1 className="text-4xl font-bold">ダウンロード</h1>
-                    {releases.map((release, index) => (<div key={release.id}><DownloadCard release={release} isLatest={index === 0}/>{index == 0 ? (<p className="mt-6 text-md font-bold">これ以前のバージョンは過去のバージョンです。最新版のマイクラで動作しない可能性があります。</p>):(<></>)}</div>))}
+                    {releases.map((release, index) => (<div key={release.id}><DownloadCard release={release} isLatest={index === 0}/>{index == 0 ? (<p className="mt-6 text-md font-bold">ここから下のバージョンは最新版のマイクラで動作しない可能性があります。</p>):(<></>)}</div>))}
                   </div>
                 </TabsContent>
               </Tabs>
