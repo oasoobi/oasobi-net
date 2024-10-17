@@ -17,9 +17,6 @@ export const Download = ({ dlCount, dlURL }: { dlCount: number, dlURL: string })
 
     return (
         <div className='items-center justify-center text-base w-full'>
-                <Label className="select-none">
-                ダウンロードすると、<Link href={"/terms"} className="underline">利用規約</Link>に同意したことになります。
-                </Label>
             <Button className="w-full mt-[1rem] select-none" onClick={downloadFile}>ダウンロード {dlCount}</Button>
         </div>
     )

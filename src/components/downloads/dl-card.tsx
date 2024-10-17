@@ -68,9 +68,7 @@ export const DownloadCard = ({ release, isLatest }: { release: GitHubRelease, is
                 <CardDescription className="whitespace-pre-line">
                     {release.body}
                 </CardDescription>
-            </CardHeader>
-            <CardContent>
                 <Download dlCount={release.assets[0].download_count} dlURL={release.assets[0].browser_download_url}></Download>
-            </CardContent>
+            </CardHeader>
         </Card>)
 }

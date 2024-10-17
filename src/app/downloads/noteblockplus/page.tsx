@@ -89,9 +89,9 @@ export default async function Home() {
   let supportedVersion: string = JSON.parse(versions)?.supported;
 
   return (
-    <main className="min-h-svh pt-[3rem] pb-[1.2rem] lg:pb-0 lg:pt-[6rem] ">
+    <main className="min-h-svh pt-[3rem] pb-[1.2rem] lg:pb-0 lg:pt-[6rem]">
       <div className="flex items-center justify-center h-full w-[88%] ml-[6%] mr-[6%]">
-        <div className="pt-5 mb-5 lg:pt-10 lg:mb-10 lg:w-[70%]">
+        <div className="pt-5 mb-5 lg:pt-10 lg:mb-10 lg:w-[60vw]">
           <div className="flex items-center gap-2">
             <Image src="/noteblock.svg" alt="" width={40} height={40} className="pointer-events-none select-none pixelated" />
             <h1 className="text-4xl font-bold">NoteBlock+</h1>
@@ -113,8 +113,9 @@ export default async function Home() {
                   <TabsTrigger value="description">使い方</TabsTrigger>
                   <TabsTrigger value="downloads">ダウンロード</TabsTrigger>
                 </TabsList>
-                <TabsContent value="description">
+                <TabsContent value="description" className="w-[90vw] lg:w-[60vw]">
                   <div className="pb-4 pt-3">
+                    <section id="attention">
                     <h1 className="text-4xl font-bold mb-5">⚠ 注意</h1>
                     <ul className="list-disc ml-[1.8rem]">
                       <li>マインクラフトのバージョンが更新されると、動かなくなる可能性があります。必ず更新を確認してください。</li>
@@ -124,17 +125,20 @@ export default async function Home() {
                     <div className="flex items-center justify-center">
                       <Image src="/please_enable.png" width={600} height={60} alt="" className="mt-3 rounded-md pointer-events-none select-none" />
                     </div>
+                    </section>
                   </div>
                   <div className="mt-10">
-                    <h1 className="text-4xl font-bold">使用方法</h1>
-                    <p className="mt-5">
-                      クリエイティブインベントリから「note stick」を取り出します。
-                    </p>
-                    <div className="flex items-center justify-center">
-                      <Image src="/ntp/inventory.png" width={600} height={30} alt="" className="mt-3 rounded-md pointer-events-none select-none" />
-                    </div>
-                    <p className="mt-3">しゃがみながら使用すると、現在の音階を変更せずに確認できます。</p>
-                    <p>そのまま使用すると、変更されたあとの音階を確認できます。</p>
+                    <section id="how_to_use">
+                      <h1 className="text-4xl font-bold">使用方法</h1>
+                      <p className="mt-5">
+                        クリエイティブインベントリから「note stick」を取り出します。
+                      </p>
+                      <div className="flex items-center justify-center">
+                        <Image src="/ntp/inventory.png" width={600} height={30} alt="" className="mt-3 rounded-md pointer-events-none select-none" />
+                      </div>
+                      <p className="mt-3">しゃがみながら使用すると、現在の音階を変更せずに確認できます。</p>
+                      <p>そのまま使用すると、変更されたあとの音階を確認できます。</p>
+                    </section>
                   </div>
                   <div className="mt-10">
                     <section id="setting">
@@ -148,9 +152,12 @@ export default async function Home() {
                   </div>
                 </TabsContent>
                 <TabsContent value="downloads" className="select-none">
-                  <div className="pb-4 pt-3">
+                  <div className="pb-4 pt-3 w-[90vw] lg:w-[60vw]">
                     <h1 className="text-4xl font-bold">ダウンロード</h1>
-                    {releases.map((release, index) => (<div key={release.id}><DownloadCard release={release} isLatest={index === 0}/>{index == 0 ? (<p className="mt-6 text-md font-bold">ここから下のバージョンは最新版のマイクラで動作しない可能性があります。</p>):(<></>)}</div>))}
+                    <p className="select-none pt-5">
+                      ダウンロードすると、<Link href={"/terms"} className="underline">利用規約</Link>に同意したことになります。
+                    </p>
+                    {releases.map((release, index) => (<div key={release.id}><DownloadCard release={release} isLatest={index === 0} />{index == 0 ? (<p className="mt-6 text-md">ここから下のバージョンは最新版のマイクラで動作しない可能性があります。</p>) : (<></>)}</div>))}
                   </div>
                 </TabsContent>
               </Tabs>

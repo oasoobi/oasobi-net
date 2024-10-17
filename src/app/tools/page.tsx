@@ -19,7 +19,6 @@ export default function Home() {
             <CardHeader>
               <CardTitle>
                 <div className="flex items-center">
-                  {/* <Image src="/noteblock.svg" width={30} height={30} alt="" className="mr-2 select-none pointer-events-none" /> */}
                   Skin Pack Generator
                 </div>
               </CardTitle>
