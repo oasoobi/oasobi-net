@@ -57,7 +57,7 @@ export const Header = () => {
     return (
         <div>
             <NextTopLoader showSpinner={false} height={1.6} color={color} />
-            <div className={`header py-1 px-8 flex items-center justify-between fixed left-0 w-full bg-background/90 backdrop-blur-sm z-50 p-4 transition-all duration-300 ease-in-out`}>
+            <div className={`header py-1 px-6 flex items-center justify-between fixed left-0 w-full bg-background/90 backdrop-blur-sm z-50 p-4 transition-all duration-300 ease-in-out`}>
                 <Link href="/" className='font-medium text-xl select-none text-foreground hover:text-foreground/80 transition-colors' translate='no'>
                     おあそび
                 </Link>
@@ -89,7 +89,7 @@ export const Header = () => {
             ></div>
 
             {isOpen ? (
-                <div className="fixed top-[calc(3rem)] left-0 w-full select-none bg-background/90 backdrop-blur-sm border-b border-border z-40 p-8 transition-all duration-200 ease-out opacity-100 translate-y-0">
+                <div className="fixed top-[calc(3rem)] left-0 w-full select-none bg-background/90 backdrop-blur-sm border-b border-border z-40 p-6 transition-all duration-200 ease-out opacity-100 translate-y-0">
                     <nav className="flex flex-col space-y-5">
                         <Link href="/downloads" className="text-foreground/80 hover:text-foreground transition-colors">
                             Downloads
@@ -103,7 +103,7 @@ export const Header = () => {
                     </nav>
                 </div>
             ) : (
-                <div className="fixed top-[calc(3rem)] left-0 w-full select-none bg-background/95 backdrop-blur-sm border-b border-border z-40 p-8 transition-all duration-200 ease-out opacity-0 -translate-y-full pointer-events-none">
+                <div className="fixed top-[calc(3rem)] left-0 w-full select-none bg-background/95 backdrop-blur-sm border-b border-border z-40 p-6 transition-all duration-200 ease-out opacity-0 -translate-y-full pointer-events-none">
                     <nav className="flex flex-col space-y-5">
                         <Link href="/downloads" className="text-foreground/80 hover:text-foreground transition-colors">
                             Downloads
