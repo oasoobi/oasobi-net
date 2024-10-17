@@ -63,8 +63,8 @@ export const Header = () => {
                 </Link>
                 <div className='flex gap-4 items-center select-none'>
                     <div className='flex items-center select-none gap-2'>
-                        <Button variant={"ghost"} className='lg:hidden text-foreground hover:text-foreground/80 hover:bg-accent' onClick={toggleOpen}>
-                            <ChevronDown />
+                        <Button variant={"ghost"} className='max-w-[40px] max-h-[40px] lg:hidden text-foreground hover:text-foreground/80 hover:bg-accent' onClick={toggleOpen}>
+                            <ChevronDown size={20} className={`min-w-[20px] min-h-[20px] transition-all ${isOpen ? "rotate-180" : "rotate-0"}`}/>
                         </Button>
                         <div className='hidden lg:flex items-center gap-3 select-none'>
                             <Link href="/downloads" legacyBehavior passHref>
