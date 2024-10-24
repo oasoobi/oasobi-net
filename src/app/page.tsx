@@ -11,7 +11,7 @@ export default function Home() {
       <div className="flex justify-center flex-col h-auto">
         <div>
           <h1 className="text-center text-4xl font-bold mb-1">おあそび</h1>
-          <p className="mb-7 text-center">プログラミングとマイクラが好きです。</p>
+          <p className="mb-7 mt-2 text-center">プログラミングとマイクラが好きです。</p>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 justify-center gap-4 w-full">
           <Link href={"https://m.youtube.com/@おあそび"} target="_blank" rel="noopener noreferrer" className="col-span-2 h-[140px]">
